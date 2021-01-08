@@ -2,7 +2,7 @@ import cv2
 import sys
 
 # получить данные от пользователя
-imagePath = 'g20.jpg'
+imagePath = 'gr.png'
 cascPath = 'haarcascade_frontalface_default.xml'
 
 faceCascade = cv2.CascadeClassifier(cascPath)
@@ -10,7 +10,7 @@ faceCascade = cv2.CascadeClassifier(cascPath)
 # читаем изображение
 img = cv2.imread(imagePath)
 
-video_capture = cv2.VideoCapture(0)
+video_capture = cv2.VideoCapture(1)
 while True:
     ret, frame = video_capture.read()
 
@@ -19,9 +19,9 @@ while True:
     # определить лицо на фотографии
     faces = faceCascade.detectMultiScale(
         gray,
-        scaleFactor=1.1,
-        minNeighbors=2,
-        minSize=(30, 30)
+        scaleFactor=2,
+        minNeighbors=5,
+        minSize=(100, 100)
     )
 
     # рисовать квадратик вокруг лица
